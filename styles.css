@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+:root {
+    --cream: #f3e9d7;
+    --cream-soft: #d8c9b0;
+    --muted: #a89678;
+    --faint: #7d6f56;
+    --bg: #171009;
+    --bg-2: #1f150b;
+    --panel: #241a0e;
+    --gold: #d9a84e;
+    --gold-2: #f0cd82;
+    --ember: #b4713a;
+    --purple: #a789e8;
+    --purple-2: #7b5cc9;
+    --ring: rgba(240, 205, 130, 0.14);
+    --ring-2: rgba(240, 205, 130, 0.08);
+    --highlight: inset 0 1px 0 rgba(240, 205, 130, 0.10);
+    --shadow-soft:
+        0 1px 2px rgba(0, 0, 0, 0.30),
+        0 10px 24px rgba(0, 0, 0, 0.28),
+        0 30px 60px rgba(0, 0, 0, 0.26);
+    --radius: 26px;
+    --radius-inner: 20px;
+    --ease: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--cream);
+    background: var(--bg);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(55% 45% at 82% -6%, rgba(217, 168, 78, 0.20), transparent 62%),
+        radial-gradient(50% 42% at 6% 6%, rgba(123, 92, 201, 0.13), transparent 60%),
+        radial-gradient(70% 50% at 50% 118%, rgba(180, 113, 58, 0.16), transparent 62%),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+    pointer-events: none;
+}
+
+a {
+    color: var(--gold-2);
+    word-break: break-word;
+    text-decoration: none;
+    transition: color 0.3s var(--ease);
+}
+a:hover { color: var(--cream); text-decoration: underline; }
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 16px 16px 0;
+    background: transparent;
+    pointer-events: none;
+}
+
+.navbar-inner {
+    width: fit-content;
+    max-width: calc(100% - 8px);
+    margin: 0 auto;
+    height: 56px;
+    padding: 0 8px 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-radius: 999px;
+    background: rgba(31, 21, 11, 0.72);
+    backdrop-filter: blur(22px) saturate(160%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    box-shadow: var(--shadow-soft), inset 0 0 0 1px var(--ring), var(--highlight);
+    pointer-events: auto;
+}
+
+.navbar-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--cream);
+    text-decoration: none;
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.navbar-brand:hover { text-decoration: none; color: var(--cream); }
+
+.brand-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, var(--ember), var(--gold));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25), 0 2px 10px rgba(180, 113, 58, 0.55);
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.navbar-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 9px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: color 0.4s var(--ease), background 0.4s var(--ease);
+}
+.navbar-links a:hover,
+.navbar-links a.active {
+    color: var(--gold-2);
+    background: rgba(217, 168, 78, 0.10);
+    text-decoration: none;
+}
+
+.page {
+    width: min(760px, calc(100% - 32px));
+    margin: 28px auto 72px;
+    padding: clamp(28px, 5vw, 44px);
+    position: relative;
+    background: var(--panel);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft), inset 0 0 0 1px var(--ring), var(--highlight);
+}
+
+.page::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border-radius: var(--radius-inner);
+    box-shadow: inset 0 0 0 1px var(--ring-2);
+    pointer-events: none;
+}
+
+.eyebrow {
+    display: inline-flex;
+    margin-bottom: 18px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--purple);
+    background: rgba(123, 92, 201, 0.14);
+    box-shadow: inset 0 0 0 1px rgba(167, 137, 232, 0.28);
+}
+
+h1, h2, h3 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+}
+
+h1 {
+    margin: 0 0 12px;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.08;
+    background: linear-gradient(115deg, var(--cream) 30%, var(--gold-2) 55%, var(--cream) 75%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    margin: 36px 0 12px;
+    font-size: clamp(1.25rem, 2.6vw, 1.55rem);
+    color: var(--gold-2);
+}
+
+h3 {
+    margin: 22px 0 8px;
+    font-size: 1.08rem;
+    color: var(--cream);
+}
+
+p, li {
+    color: var(--cream-soft);
+    font-size: 1rem;
+}
+
+p { margin: 0 0 14px; }
+
+.meta {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 22px;
+}
+
+.links {
+    margin: 18px 0 8px;
+    color: var(--muted);
+}
+
+.links a { font-weight: 600; }
+
+ul {
+    margin: 0 0 16px;
+    padding-left: 1.2em;
+}
+
+li { margin: 8px 0; }
+li::marker { color: var(--gold); }
+
+.note {
+    margin: 18px 0 22px;
+    padding: 16px 18px;
+    border-radius: 16px;
+    color: var(--cream-soft);
+    background: rgba(123, 92, 201, 0.10);
+    box-shadow: inset 0 0 0 1px rgba(167, 137, 232, 0.22);
+    border-left: 3px solid var(--purple);
+}
+.note strong { color: var(--cream); }
+
+.faq {
+    margin-top: 8px;
+    padding-top: 8px;
+}
+
+.faq h3 {
+    margin-top: 26px;
+    padding-top: 4px;
+}
+
+.site-footer {
+    width: min(760px, calc(100% - 32px));
+    margin: 0 auto 48px;
+    color: var(--faint);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.site-footer a {
+    color: var(--purple);
+    font-weight: 600;
+}
+
+@media (max-width: 640px) {
+    .navbar-inner {
+        width: 100%;
+        justify-content: space-between;
+        padding-right: 12px;
+        gap: 8px;
+    }
+    .navbar-links a { padding: 8px 10px; font-size: 0.82rem; }
+    .page { margin-top: 20px; }
+}
