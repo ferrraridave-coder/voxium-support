@@ -272,14 +272,3 @@ li::marker { color: var(--gold); }
 }
 
 
-/* Mobile: the sticky pill was unwinnable in iOS Chrome — WebKit skips
-   painting stuck backdrop-filter layers until first touch, and Chrome
-   pre-scrolls opened links past it (Aug 31, the in-app link saga). On
-   phones the nav is simply the first element in flow: always painted,
-   nothing pinned, nothing to pop in over the content. Desktop keeps the
-   floating pill. */
-@media (max-width: 700px) {
-    .navbar {
-        position: static;
-    }
-}
