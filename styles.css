@@ -84,6 +84,12 @@ a:hover { color: var(--cream); text-decoration: underline; }
     -webkit-backdrop-filter: blur(22px) saturate(160%);
     box-shadow: var(--shadow-soft), inset 0 0 0 1px var(--ring), var(--highlight);
     pointer-events: auto;
+    /* WebKit fails to composite sticky+backdrop-filter on first paint —
+       the pill was invisible until the first touch, then popped in over
+       the content (in-app link opens, Aug 31). Forcing the layer up front
+       makes it paint with the page. */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .navbar-brand {

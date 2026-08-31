@@ -132,5 +132,10 @@
     <p>Built by David Picknell.</p>
     <p><a href="mailto:ferrraridave@icloud.com">Contact support</a></p>
 </footer>
+<script>
+  // iOS Chrome can open external links pre-scrolled by its toolbar height,
+  // hiding the nav pill until a touch. Fresh opens pin to the top.
+  addEventListener('pageshow', function (e) { if (!e.persisted) scrollTo(0, 0); });
+</script>
 </body>
 </html>
